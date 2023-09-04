@@ -12,9 +12,9 @@ export const Demo = () => {
 
 	useEffect(() => {
 		actions.obtenerInfohome(),
-			actions.obtenerInfoPlaneta(),
-			actions.obtenerAutos()
-
+		actions.obtenerInfoPlaneta(),
+		actions.obtenerAutos(),
+		actions.getPerfil()
 	}, [])
 
 

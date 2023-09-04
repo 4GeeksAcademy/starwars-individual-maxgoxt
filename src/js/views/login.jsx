@@ -1,18 +1,28 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 import imagen from "../../img/how-to.png";
 
-export const Login = props => {
+export const Login = () => {
 
     const { store, actions } = useContext(Context);
     const [login, setLogin] = useState("show active")
     const [loginST, setLoginST] = useState("active")
     const [register, setRegister] = useState("")
     const [registerST, setRegisterST] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
 
 
+    async function submit(e){
+        e.preventDefault();
+        let logged = await actions.login(email, password);
+        if (logged === true) {
+            navigate("/")
+        }
+    }
 
 
     function logines() {
@@ -52,16 +62,16 @@ export const Login = props => {
 
             <div className="tab-content">
                 <div className={"tab-pane fade " + login} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                    <form>
+                    <form onSubmit={(e) => {submit(e)}}>
                         
                         <div className="form-outline mb-4">
-                            <input type="email" id="loginName" className="form-control" />
-                            <label className="form-label" htmlFor="loginName">Email or username</label>
+                            <input type="email" id="loginName" className="form-control" onChange={(e)=>{setEmail(e.target.value)}}/>
+                            <label className="form-label" htmlFor="loginName">Email</label>
                         </div>
 
 
                         <div className="form-outline mb-4">
-                            <input type="password" id="loginPassword" className="form-control" />
+                            <input type="password" id="loginPassword" className="form-control" onChange={(e)=>{setPassword(e.target.value)}}/>
                             <label className="form-label" htmlFor="loginPassword">Password</label>
                         </div>
 

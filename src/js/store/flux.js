@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -12,6 +14,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		},
 		actions: {
+
+			login: async (email,password) => {
+				try {
+					let data = await axios.post('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/login',
+					{
+						"email" : email,
+						"password" : password
+					})
+					console.log(data);
+					localStorage.setItem("token", data.data.access_token)
+					return true
+				} catch (error) {
+					console.log(error);
+					if (error.response.status === 404) {
+						alert(error.response.data.msj)
+					}
+					return false
+				}
+			},
+
+			getPerfil: async (email,password) => {
+				try {
+					let data = await axios.get('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/perfil',
+					{
+						headers : {"Authorization" : "Bearer " + localStorage.getItem('token')}
+					})
+					console.log(data);
+					return true
+				} catch (error) {
+					console.log(error);
+					// if (error.response.status === 404) {
+					// 	alert(error.response.data.msj)
+					// }
+					return false
+				}
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
