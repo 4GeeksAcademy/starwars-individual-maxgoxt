@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import PropTypes from "prop-types";
-import imagen from "../../img/how-to.png";
 
 export const Login = () => {
 
@@ -46,7 +44,6 @@ export const Login = () => {
 
     return (
         <div className="container bg-dark bg-opacity-75 text-white">
-
             <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a className={"nav-link " + loginST} id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
@@ -57,9 +54,6 @@ export const Login = () => {
                         aria-controls="pills-register" aria-selected="false" onClick={() => registeres()}>Register</a>
                 </li>
             </ul>
-
-
-
             <div className="tab-content">
                 <div className={"tab-pane fade " + login} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                     <form onSubmit={(e) => {submit(e)}}>
@@ -68,29 +62,22 @@ export const Login = () => {
                             <input type="email" id="loginName" className="form-control" onChange={(e)=>{setEmail(e.target.value)}}/>
                             <label className="form-label" htmlFor="loginName">Email</label>
                         </div>
-
-
                         <div className="form-outline mb-4">
                             <input type="password" id="loginPassword" className="form-control" onChange={(e)=>{setPassword(e.target.value)}}/>
                             <label className="form-label" htmlFor="loginPassword">Password</label>
                         </div>
-
-
                         <div className="row mb-4">
                             <div className="col-md-6 d-flex justify-content-center">
-
                                 {/* <div className="form-check mb-3 mb-md-0">
                                     <input className="form-check-input" type="checkbox" value="" id="loginCheck" defaultChecked />
                                     <label className="form-check-label" htmlFor="loginCheck"> Remember me </label>
                                 </div> */}
                             </div>
-
                             {/* <div className="col-md-6 d-flex justify-content-center">
 
                                 <a href="#!">Forgot password?</a>
                             </div> */}
                         </div>
-
                         <div className="text-center mb-3">
                             <p>Sign in with:</p>
                             <button type="button" className="btn btn-link btn-floating mx-1">
@@ -111,8 +98,7 @@ export const Login = () => {
                         </div>
 
                         <button type="submit" className="btn btn-outline-warning ml-auto">Sign in</button>
-{/* 
-                        <div className="text-center">
+                        {/*<div className="text-center">
                             <p>Not a member? <a href="#!">Register</a></p>
                         </div> */}
                     </form>
@@ -131,18 +117,15 @@ export const Login = () => {
                             <label className="form-label" htmlFor="registerUsername">Username</label>
                         </div>
 
-
                         <div className="form-outline mb-4">
                             <input type="email" id="registerEmail" className="form-control" />
                             <label className="form-label" htmlFor="registerEmail">Email</label>
                         </div>
 
-
                         <div className="form-outline mb-4">
                             <input type="password" id="registerPassword" className="form-control" />
                             <label className="form-label" htmlFor="registerPassword">Password</label>
                         </div>
-
 
                         <div className="form-outline mb-4">
                             <input type="password" id="registerRepeatPassword" className="form-control" />

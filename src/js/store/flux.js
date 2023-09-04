@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			autos: [],
 			detallesAuto: {},
 			favorito: [],
+			auth: false
 
 		},
 		actions: {
@@ -24,6 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					console.log(data);
 					localStorage.setItem("token", data.data.access_token)
+					setStore({ auth : true})
 					return true
 				} catch (error) {
 					console.log(error);
@@ -34,7 +36,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			getPerfil: async (email,password) => {
+			logout: async () => {
+				localStorage.removeItem('token')
+				setStore({ auth : false})
+			},
+
+			getPerfil: async () => {
 				try {
 					let data = await axios.get('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/perfil',
 					{
@@ -47,6 +54,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// if (error.response.status === 404) {
 					// 	alert(error.response.data.msj)
 					// }
+					return false
+				}
+			},
+
+			validToken: async () => {
+				try {
+					let data = await axios.get('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/valid-token',
+					{
+						headers : {"Authorization" : "Bearer " + localStorage.getItem('token')}
+					})
+					console.log(data);
+					console.log('soy valid token holaaaaaaaaaaaaa');
+					setStore({ auth : true})
+					return true
+				} catch (error) {
+					console.log(error);
+					if (error.response.status === 422) {
+						setStore({ auth : false})
+						console.log('soy valid token holaaaaaaaaaaaaa');
+					}
 					return false
 				}
 			},
@@ -213,7 +240,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 
 				if (nombrEx === false) {
-					console.log(nombrEx)
 					setStore({ ...store, favorito: [...store.favorito, nom] })
 				}
 
