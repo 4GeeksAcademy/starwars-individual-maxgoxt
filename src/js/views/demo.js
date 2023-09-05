@@ -26,7 +26,7 @@ export const Demo = () => {
 	return (
 		<div className="container">
 			<h2 className="text-warning" style={{textShadow: "1px 1px 10px yellow"}}>PERSONAJES</h2>
-			<div className="d-flex mb-5" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
+			<div className="d-flex mb-5 bg-black bg-opacity-50" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
 				{store.people.map((item, index) => {
 					return (
 						<div key={index}>
@@ -37,7 +37,7 @@ export const Demo = () => {
 			</div>
 			<br />
 			<h2 className="text-warning" style={{textShadow: "1px 1px 10px yellow"}}>PLANETAS</h2>
-			<div className="d-flex mb-5" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
+			<div className="d-flex mb-5 bg-black bg-opacity-50" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
 				{store.planetas.map((item, index) => {
 					return (
 						<div key={index}>
@@ -48,7 +48,7 @@ export const Demo = () => {
 			</div>
 			<br />
 			<h2 className="text-warning" style={{textShadow: "1px 1px 10px yellow"}}>VEHICULOS</h2>
-			<div className="d-flex mb-5" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
+			<div className="d-flex mb-5 bg-black bg-opacity-50" style={{ overflowX: 'scroll', scrollSnapType: 'x mandatory' }}>
 				{store.autos.map((item, index) => {
 
 					return (

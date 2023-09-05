@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import personajes from "../../styles/personajes.css"
 
 
 export const Personajes = props => {

@@ -22,11 +22,11 @@ export const SinglePlaneta = props => {
                     <div className="container">
                         <div className="row bg-black p-5 bg-gradient bg-opacity-75">
                             <div className="col-md-6" style={{marginBottom:"20px"}}>
-                                {params.theid == 0 ?
-                                    <img src="https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png" style={{width:"100%"}}/> :
-
-                                    <img alt="esto es una imagen de un planeta"
-                                    src={"https://starwars-visualguide.com/assets/img/planets/" + (params.theid) + ".jpg"} style={{width:"100%"}} />}
+                                {params.theid !== 0 ?
+                                     <img alt="esto es una imagen de un planeta"
+                                     src={"https://starwars-visualguide.com/assets/img/planets/" + (params.theid) + ".jpg"} style={{width:"100%"}} />
+                                     :
+                                    <img src="https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png" style={{width:"100%"}}/>}
                             </div>
                             <br/>
                             <div className="col-md-6 text-white">

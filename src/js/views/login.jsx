@@ -43,8 +43,8 @@ export const Login = () => {
 
 
     return (
-        <div className="container bg-dark bg-opacity-75 text-white">
-            <ul className="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <div className="bg-dark bg-opacity-75 text-white p-5" style={{margin: "70px 70px 100px 70px"}}>
+            <ul className="nav nav-pills bg-black nav-justified mb-5" id="ex1" role="tablist">
                 <li className="nav-item" role="presentation">
                     <a className={"nav-link " + loginST} id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab"
                         aria-controls="pills-login" aria-selected="true" onClick={() => logines()}>Login</a>
@@ -57,7 +57,6 @@ export const Login = () => {
             <div className="tab-content">
                 <div className={"tab-pane fade " + login} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
                     <form onSubmit={(e) => {submit(e)}}>
-                        
                         <div className="form-outline mb-4">
                             <input type="email" id="loginName" className="form-control" onChange={(e)=>{setEmail(e.target.value)}}/>
                             <label className="form-label" htmlFor="loginName">Email</label>
@@ -132,13 +131,13 @@ export const Login = () => {
                             <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
                         </div>
 
-                        <div className="form-check d-flex justify-content-center mb-4">
-                            {/* <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck" defaultChecked
+                        {/* <div className="form-check d-flex justify-content-center mb-4">
+                            <input className="form-check-input me-2" type="checkbox" value="" id="registerCheck" defaultChecked
                                 aria-describedby="registerCheckHelpText" />
                             <label className="form-check-label" htmlFor="registerCheck">
                                 I have read and agree to the terms
-                            </label> */}
-                        </div>
+                            </label> 
+                        </div>*/}
 
                         <div className="text-center mb-3">
                             <p>Sign up with:</p>

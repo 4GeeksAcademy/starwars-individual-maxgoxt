@@ -26,12 +26,12 @@ export const HomeCardPlanet = props => {
   
 
     return (
-        <div>
+        <div className="text-white my-5">
             <div className="card mx-3" style={{ width: "18rem", flex: '0 0 250px' }}>
                 {props.index === 0 ?
                 <img src='https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png' className="card-img-top" alt='imagen' />:
             <img src={"https://starwars-visualguide.com/assets/img/planets/" + (props.index + 1) + ".jpg"} className="card-img-top" alt='imagen' /> }
-            <div className="card-body">
+            <div className="card-body bg-dark">
                     <h5 className="card-title">{props.name}</h5>
                     <div className="mb-3">
                         <label>Population:</label><span> {props.population}</span><br />
@@ -41,24 +41,19 @@ export const HomeCardPlanet = props => {
                         <Link to={"/singlePlaneta/" + (props.index + 1)}>
                             <button type="button" className="btn btn-outline-primary">Learn more!</button>
                         </Link>
-                        {/*AGREGAR NUMERO EN EL ID DEL <input/> PARA QUE FUNCIONE BIEN*/}
                         <input
                             type="checkbox"
                             className="btn-check"
                             id={"btn-check-outlined" + props.index }
                             autoComplete="off"
-                            
                         />
                         <label
                             className="btn btn-outline-warning"
                             htmlFor={"btn-check-outlined" + props.index + 1}
                             id = {props.index}
                             onClick={() => toggleFavorite2(props.index)}>
-                           
                             <i className={fav2} ref={el2 => (refs2.current[props.index] = el2)} id={props.name}></i>
-                            
                         </label>
-                        
                     </div>
                 </div>
             </div>

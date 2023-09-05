@@ -23,10 +23,10 @@ export const HomeCardCar = props => {
     };
 
     return (
-        <div>
+        <div className="text-white my-5">
             <div className="card mx-3" style={{ width: "18rem", flex: '0 0 250px' }}>
                 <img src={imagen} className="card-img-top" alt='imagen' />
-                <div className="card-body">
+                <div className="card-body bg-dark">
                     <h5 className="card-title">{props.name}</h5>
                     <div className="mb-3">
                         <label>Name: </label><span> {props.name}</span><br />
