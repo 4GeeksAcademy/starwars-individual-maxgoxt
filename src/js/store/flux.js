@@ -16,6 +16,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+			signin: async (nombre, Apellido, emailR, passwordR) => {
+				try {
+					let data = await axios.post('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/signup',
+					{
+						'nombre' : nombre,
+						'apellido' : Apellido,
+						'email' : emailR,
+						'password' : passwordR
+					})
+					console.log(data);
+					return true
+				} catch (error) {
+					console.log(error);
+					if (error.response.status === 404) {
+						alert(error.response.data.msj)
+					}
+					return false
+				}
+			},
+
 			login: async (email,password) => {
 				try {
 					let data = await axios.post('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/login',
@@ -70,10 +90,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return true
 				} catch (error) {
 					console.log(error);
-					if (error.response.status === 422) {
-						setStore({ auth : false})
-						console.log('soy valid token holaaaaaaaaaaaaa');
-					}
+					// if (error.response.status === 422) {
+					// 	setStore({ auth : false})
+					// 	console.log('soy valid token holaaaaaaaaaaaaa');
+					// }
 					return false
 				}
 			},

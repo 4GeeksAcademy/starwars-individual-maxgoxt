@@ -11,10 +11,15 @@ export const Login = () => {
     const [registerST, setRegisterST] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [nombre, setnombre] = useState("")
+    const [apellido, setApellido] = useState("")
+    const [emailR, setEmailR] = useState("")
+    const [passwordR, setPasswordR] = useState("")
+    const [confirmP, setConfirmP] = useState("")
     const navigate = useNavigate()
 
 
-    async function submit(e){
+    async function submitLogin(e){
         e.preventDefault();
         let logged = await actions.login(email, password);
         if (logged === true) {
@@ -22,7 +27,15 @@ export const Login = () => {
         }
     }
 
-
+    async function submitSignUp(e){
+        e.preventDefault();
+        if (passwordR === confirmP) {
+            await actions.signin(nombre, apellido, emailR, passwordR)
+        }else{
+            alert('La contraseña no coincide con la confirmacion')
+        }
+    }
+    
     function logines() {
         if (login == "") {
             setLogin("show active")
@@ -51,12 +64,12 @@ export const Login = () => {
                 </li>
                 <li className="nav-item" role="presentation">
                     <a className={"nav-link " + registerST} id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
-                        aria-controls="pills-register" aria-selected="false" onClick={() => registeres()}>Register</a>
+                        aria-controls="pills-register" aria-selected="false" onClick={() => registeres()}>Registrate</a>
                 </li>
             </ul>
             <div className="tab-content">
                 <div className={"tab-pane fade " + login} id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                    <form onSubmit={(e) => {submit(e)}}>
+                    <form onSubmit={(e) => {submitLogin(e)}}>
                         <div className="form-outline mb-4">
                             <input type="email" id="loginName" className="form-control" onChange={(e)=>{setEmail(e.target.value)}}/>
                             <label className="form-label" htmlFor="loginName">Email</label>
@@ -103,32 +116,31 @@ export const Login = () => {
                     </form>
                 </div>
                 <div className={"tab-pane fade " + register} id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                    <form>
-                        
+                    <form onSubmit={(e) => {submitSignUp(e)}}>
                         <div className="form-outline mb-4">
-                            <input type="text" id="registerName" className="form-control" />
-                            <label className="form-label" htmlFor="registerName">Name</label>
+                            <input type="text" id="registerNombre" className="form-control" value={nombre} onChange={(e)=>{setnombre(e.target.value)}}/>
+                            <label className="form-label" htmlFor="registerNombre" >Nombre</label>
                         </div>
 
 
                         <div className="form-outline mb-4">
-                            <input type="text" id="registerUsername" className="form-control" />
-                            <label className="form-label" htmlFor="registerUsername">Username</label>
+                            <input type="text" id="registerApellido" className="form-control" value={apellido} onChange={(e)=>{setApellido(e.target.value)}}/>
+                            <label className="form-label" htmlFor="registerApellido">Apellido</label>
                         </div>
 
                         <div className="form-outline mb-4">
-                            <input type="email" id="registerEmail" className="form-control" />
+                            <input type="email" id="registerEmail" className="form-control" value={emailR} onChange={(e)=>{setEmailR(e.target.value)}}/>
                             <label className="form-label" htmlFor="registerEmail">Email</label>
                         </div>
 
                         <div className="form-outline mb-4">
-                            <input type="password" id="registerPassword" className="form-control" />
-                            <label className="form-label" htmlFor="registerPassword">Password</label>
+                            <input type="password" id="registerContrasena" className="form-control" value={passwordR} onChange={(e)=>{setPasswordR(e.target.value)}}/>
+                            <label className="form-label" htmlFor="registerContrasena">Contraseña</label>
                         </div>
 
                         <div className="form-outline mb-4">
-                            <input type="password" id="registerRepeatPassword" className="form-control" />
-                            <label className="form-label" htmlFor="registerRepeatPassword">Repeat password</label>
+                            <input type="password" id="registerRepeatPassword" className="form-control" value={confirmP} onChange={(e)=>{setConfirmP(e.target.value)}}/>
+                            <label className="form-label" htmlFor="registerRepeatPassword">Confirme la Contraseña</label>
                         </div>
 
                         {/* <div className="form-check d-flex justify-content-center mb-4">

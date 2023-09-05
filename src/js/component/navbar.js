@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -16,6 +16,7 @@ export const Navbar = () => {
 						style={{ width: '100px', height: 'auto' }}
 					/>
 				</a>
+				<a href="https://github.com/4GeeksAcademy/maxgoxt-jwt-starwars-api-rest.git" target="_blank">Link al server</a>
 				{store.auth ?
 					<div className="d-flex justify-content-between my-3">
 						<div className="dropdown">
