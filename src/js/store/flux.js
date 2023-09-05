@@ -1,5 +1,5 @@
 import axios from "axios";
-
+let url = "https://laughing-space-couscous-9pgg5x9g6gw3p4x5-3000.app.github.dev"
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -11,14 +11,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			autos: [],
 			detallesAuto: {},
 			favorito: [],
-			auth: false
+			auth: false,
 
 		},
 		actions: {
 
 			signin: async (nombre, Apellido, emailR, passwordR) => {
 				try {
-					let data = await axios.post('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/signup',
+					let data = await axios.post(url + '/signup',
 					{
 						'nombre' : nombre,
 						'apellido' : Apellido,
@@ -31,6 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 					if (error.response.status === 404) {
 						alert(error.response.data.msj)
+						setStore({ signUp : error.response.data.msj})
 					}
 					return false
 				}
@@ -38,7 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			login: async (email,password) => {
 				try {
-					let data = await axios.post('https://orange-potato-ggvvrpqvq9r2996v-3000.app.github.dev/login',
+					let data = await axios.post(url + '/login',
 					{
 						"email" : email,
 						"password" : password

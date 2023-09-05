@@ -37,6 +37,11 @@ export const Login = () => {
         }
         else{
             await actions.signin(nombre, apellido, emailR, passwordR)
+            setnombre("")
+            setApellido("")
+            setEmailR("")
+            setPasswordR("")
+            setConfirmP("")
         }
     }
     
