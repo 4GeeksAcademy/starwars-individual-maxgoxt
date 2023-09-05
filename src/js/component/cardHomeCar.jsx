@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
-import imagen from "../../img/how-to.png";
 
 export const HomeCardCar = props => {
     const [fav3, setFav3] = useState("far fa-heart");
     const refs3 = useRef([]);
 
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
 
     useEffect(() => {                       
         refs3.current = refs3.current.slice(0, props.length); // Maintain the same number of refs as items
@@ -25,7 +24,7 @@ export const HomeCardCar = props => {
     return (
         <div className="text-white my-5">
             <div className="card mx-3" style={{ width: "18rem", flex: '0 0 250px' }}>
-                <img src={imagen} className="card-img-top" alt='imagen' />
+                <img src='https://i1.wp.com/www.astropt.org/blog/wp-content/uploads/2015/05/xw1.jpg' className="card-img-top" alt='imagen' />
                 <div className="card-body bg-dark">
                     <h5 className="card-title">{props.name}</h5>
                     <div className="mb-3">

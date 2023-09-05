@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { HomeCardPers } from "../component/cardHomePers.jsx";
 import { HomeCardPlanet } from "../component/cardHomePlanet.jsx";
 import { HomeCardCar } from "../component/cardHomeCar.jsx";
@@ -19,7 +18,6 @@ export const Demo = () => {
 
 
 	useEffect(function () {
-		/* 	actions.actualizar() */
 	}, [store.favorito])
 
 
