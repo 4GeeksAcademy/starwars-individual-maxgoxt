@@ -29,10 +29,14 @@ export const Login = () => {
 
     async function submitSignUp(e){
         e.preventDefault();
-        if (passwordR === confirmP) {
-            await actions.signin(nombre, apellido, emailR, passwordR)
-        }else{
+        if (passwordR !== confirmP) {
             alert('La contraseña no coincide con la confirmacion')
+        }
+        else if (nombre=="" || apellido=="" || emailR=="" || passwordR=="") {
+            alert('Hay campos vacíos')
+        }
+        else{
+            await actions.signin(nombre, apellido, emailR, passwordR)
         }
     }
     
@@ -53,7 +57,6 @@ export const Login = () => {
             setLoginST("")
         }
     }
-
 
     return (
         <div className="bg-dark bg-opacity-75 text-white p-5" style={{margin: "70px 70px 100px 70px"}}>
