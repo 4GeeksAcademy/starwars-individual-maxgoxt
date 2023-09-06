@@ -31,7 +31,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 					if (error.response.status === 404) {
 						alert(error.response.data.msj)
-						setStore({ signUp : error.response.data.msj})
 					}
 					return false
 				}
